@@ -1,0 +1,56 @@
+<template>
+    <div class="slds-page-header">
+        <p class="slds-page-header__title slds-truncate" title="">Contact List</p>
+        <span class="slds-badge">Selected Contact:{selectedCount}</span>
+        <div class="slds-grid slds-grid--align-end">
+            <button class="slds-button slds-button--brand" onclick={sendMail}>Send Email</button>  
+        </div>
+    </div>
+
+    <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+        <thead>
+            <tr class="slds-text-title--caps">
+                <th style="width:3.25rem;" class="slds-text-align--right">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                           
+                        </div>
+                    </div>   
+                </th>
+                <th>
+                    <span class="slds-truncate" title="Name">First Name</span>      
+                 </th>
+                 <th>
+                    <span class="slds-truncate" title="Last Name">Last Name</span>
+                 </th>
+                 <th>       
+                    <span class="slds-truncate" title="Email">Email</span>
+                 </th>
+            </tr>
+        </thead>  
+        <tbody>
+            <template for:each={ListOfContact} for:item="con">
+                <tr key={con.Id}>
+                    <td scope="row" class="slds-text-align--right" style="width:3.25rem;">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                
+                                    <lightning-input type="checkbox" value={con.Email} data-id="boxPack" onchange={handleChange}></lightning-input>
+                                
+                            </div>
+                        </div>
+                    </td> 
+                    <td scope="row">
+                        <div class="slds-truncate" title={con.Name}><a>{con.Name}</a></div>
+                     </td>
+                     <td scope="row">
+                        <div class="slds-truncate" title={con.LastName}>{con.LastName}</div>
+                     </td>
+                     <td scope="row">
+                        <div class="slds-truncate" title={con.Email}>{con.Email}</div>
+                     </td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</template>
